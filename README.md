@@ -21,6 +21,11 @@ The extractor is a swappable layer. An LLM-based extractor can replace `extract(
 
 ## Run it
 ```bash
+python ui.py                   # local web UI at http://127.0.0.1:8765
+```
+The UI has two tabs: paste or open a single invoice and see each field with its confidence and the reason codes, or generate a batch and work the review queue with Approve / Reject (decisions are logged to `output/reviewer_decisions.jsonl`). It binds to localhost only.
+
+```bash
 python run.py                  # generate 120 synthetic invoices, process, print evaluation
 python -m unittest discover -s tests -t .
 ```
@@ -53,4 +58,4 @@ Defects caught: total mismatch 14/14, unknown vendor 10/10, missing number 8/8, 
 5. Monitoring: accuracy drift, review volume, time saved.
 
 ## Files
-`run.py`, `intake/` (generate, extract, validate, pipeline, evaluate), `tests/`. `data/` and `output/` are regenerated on each run.
+`run.py`, `ui.py`, `intake/` (generate, extract, validate, pipeline, evaluate), `tests/`. `data/` and `output/` are regenerated on each run.
